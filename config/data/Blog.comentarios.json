@@ -1,0 +1,85 @@
+[{
+  "_id": {
+    "$oid": "68296ff7595c5cbb8b6b8b2a"
+  },
+  "nombreAutor": "Feliciano07",
+  "contenido": "Estoy muy contento por ti, espero que te vaya muy bien",
+  "publicacion": {
+    "$oid": "68296cb8e97ea7227e630e27"
+  },
+  "status": true,
+  "createdAt": {
+    "$date": "2025-05-18T05:28:23.068Z"
+  },
+  "updatedAt": {
+    "$date": "2025-05-18T05:28:23.068Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "68297029595c5cbb8b6b8b2d"
+  },
+  "nombreAutor": "SmileySmile",
+  "contenido": "NICEEEEEEEEE!!!!!!",
+  "publicacion": {
+    "$oid": "68296cb8e97ea7227e630e27"
+  },
+  "status": true,
+  "createdAt": {
+    "$date": "2025-05-18T05:29:13.454Z"
+  },
+  "updatedAt": {
+    "$date": "2025-05-18T05:29:13.454Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "68297040595c5cbb8b6b8b30"
+  },
+  "nombreAutor": "LordRafa",
+  "contenido": "Radical Viejo!",
+  "publicacion": {
+    "$oid": "68296cb8e97ea7227e630e27"
+  },
+  "status": true,
+  "createdAt": {
+    "$date": "2025-05-18T05:29:36.676Z"
+  },
+  "updatedAt": {
+    "$date": "2025-05-18T05:29:36.676Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "68297065595c5cbb8b6b8b33"
+  },
+  "nombreAutor": "LordRafa",
+  "contenido": "Radical Viejo! Sigue asi",
+  "publicacion": {
+    "$oid": "68296e0ee97ea7227e630e2f"
+  },
+  "status": false,
+  "createdAt": {
+    "$date": "2025-05-18T05:30:13.063Z"
+  },
+  "updatedAt": {
+    "$date": "2025-05-18T05:46:03.323Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "682970ac595c5cbb8b6b8b37"
+  },
+  "nombreAutor": "Ferchooo",
+  "contenido": "Sigue asi",
+  "publicacion": {
+    "$oid": "68296d9fe97ea7227e630e2b"
+  },
+  "status": true,
+  "createdAt": {
+    "$date": "2025-05-18T05:31:24.343Z"
+  },
+  "updatedAt": {
+    "$date": "2025-05-18T05:31:24.343Z"
+  }
+}]

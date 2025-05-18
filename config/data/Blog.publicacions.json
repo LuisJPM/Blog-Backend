@@ -1,0 +1,76 @@
+[{
+  "_id": {
+    "$oid": "68296cb8e97ea7227e630e27"
+  },
+  "titulo": "ENTREGUE MI PROYECTO DE TALLER",
+  "descripcion": "Estoy muy contento por haber completado mi trabajo! Espero que me vaya bien.",
+  "curso": [
+    {
+      "$oid": "6829135c9f6eddabc709989b"
+    }
+  ],
+  "status": true,
+  "createdAt": {
+    "$date": "2025-05-18T05:14:32.947Z"
+  },
+  "updatedAt": {
+    "$date": "2025-05-18T05:24:46.471Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "68296d9fe97ea7227e630e2b"
+  },
+  "titulo": "EMPEZAMOS PRACTICA SUPERVISADA",
+  "descripcion": "Espero que me vaya bien. En esta nueva materia!",
+  "curso": [
+    {
+      "$oid": "6829137b9f6eddabc709989f"
+    }
+  ],
+  "status": true,
+  "createdAt": {
+    "$date": "2025-05-18T05:18:23.315Z"
+  },
+  "updatedAt": {
+    "$date": "2025-05-18T05:18:23.315Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "68296e0ee97ea7227e630e2f"
+  },
+  "titulo": "NUEVA ETAPA EN TECNOLOGIA",
+  "descripcion": "La mejor de la trilogia, Si o Si? LOL XDXDXDXDXD",
+  "curso": [
+    {
+      "$oid": "6829136c9f6eddabc709989d"
+    }
+  ],
+  "status": false,
+  "createdAt": {
+    "$date": "2025-05-18T05:20:14.357Z"
+  },
+  "updatedAt": {
+    "$date": "2025-05-18T05:25:29.470Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "68296e2ee97ea7227e630e33"
+  },
+  "titulo": "NUEVA ETAPA EN TECNOLOGIA",
+  "descripcion": "Espero que sigamos igual de bien en esta ultima etapa de la carrera.",
+  "curso": [
+    {
+      "$oid": "6829136c9f6eddabc709989d"
+    }
+  ],
+  "status": true,
+  "createdAt": {
+    "$date": "2025-05-18T05:20:46.590Z"
+  },
+  "updatedAt": {
+    "$date": "2025-05-18T05:20:46.590Z"
+  }
+}]

@@ -6,7 +6,14 @@ export const postComentario = async (req, res) => {
     try {
         const data = req.body;
 
-        const publicacionEncontrada = await Publicacion.findOne({ title: data.publicacion });
+        if (!data.publicacion) {
+            return res.status(400).json({
+                success: false,
+                message: 'La publicación es requerida'
+            });
+        }
+
+        const publicacionEncontrada = await Publicacion.findOne({ titulo: data.publicacion });
         if (!publicacionEncontrada) {
             return res.status(400).json({
                 success: false,
@@ -15,15 +22,8 @@ export const postComentario = async (req, res) => {
         }
 
         data.publicacion = publicacionEncontrada._id;
-
         const comentario = new Comentario(data);
         await comentario.save();
-
-        await comentario.populate({
-            path: 'publicacion',
-            select: 'title',
-            populate: { path: 'course', select: 'name' }
-        });
 
         res.status(200).json({
             success: true,
@@ -50,11 +50,6 @@ export const getComentarios = async (req = request, res = response) => {
             Comentario.find(query)
                 .skip(Number(desde))
                 .limit(Number(limite))
-                .populate({
-                    path: 'publicacion',
-                    select: 'title',
-                    populate: { path: 'course', select: 'name' }
-                })
         ]);
 
         res.status(200).json({
@@ -76,12 +71,7 @@ export const getComentarios = async (req = request, res = response) => {
 export const getComentarioById = async (req, res) => {
     try {
         const { id } = req.params;
-
-        const comentario = await Comentario.findById(id).populate({
-            path: 'publicacion',
-            select: 'title',
-            populate: { path: 'course', select: 'name' }
-        });
+        const comentario = await Comentario.findById(id);
 
         if (!comentario) {
             return res.status(404).json({
@@ -109,8 +99,14 @@ export const getComentarioByPublicacion = async (req, res) => {
     try {
         const { title } = req.params;
 
-        const publicacion = await Publicacion.findOne({ title });
+        if (!title) {
+            return res.status(400).json({
+                success: false,
+                message: 'El título es requerido'
+            });
+        }
 
+        const publicacion = await Publicacion.findOne({ title });
         if (!publicacion) {
             return res.status(404).json({
                 success: false,
@@ -118,12 +114,7 @@ export const getComentarioByPublicacion = async (req, res) => {
             });
         }
 
-        const comentarios = await Comentario.find({ publicacion: publicacion._id, status: true })
-            .populate({
-                path: 'publicacion',
-                select: 'title',
-                populate: { path: 'course', select: 'name' }
-            });
+        const comentarios = await Comentario.find({ publicacion: publicacion._id, status: true });
 
         res.status(200).json({
             success: true,
@@ -145,8 +136,14 @@ export const putComentario = async (req, res = response) => {
         const { id } = req.params;
         const data = req.body;
 
-        const publicacionEncontrada = await Publicacion.findOne({ title: data.publicacion });
+        if (!data.publicacion) {
+            return res.status(400).json({
+                success: false,
+                message: 'La publicación es requerida'
+            });
+        }
 
+        const publicacionEncontrada = await Publicacion.findOne({ title: data.publicacion });
         if (!publicacionEncontrada) {
             return res.status(400).json({
                 success: false,
@@ -155,12 +152,7 @@ export const putComentario = async (req, res = response) => {
         }
 
         data.publicacion = publicacionEncontrada._id;
-
-        const comentario = await Comentario.findByIdAndUpdate(id, data, { new: true }).populate({
-            path: 'publicacion',
-            select: 'title',
-            populate: { path: 'course', select: 'name' }
-        });
+        const comentario = await Comentario.findByIdAndUpdate(id, data, { new: true });
 
         res.status(200).json({
             success: true,
@@ -180,7 +172,6 @@ export const putComentario = async (req, res = response) => {
 export const deleteComentario = async (req, res) => {
     try {
         const { id } = req.params;
-
         const comentario = await Comentario.findByIdAndUpdate(id, { status: false }, { new: true });
 
         res.status(200).json({

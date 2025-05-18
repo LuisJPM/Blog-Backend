@@ -3,9 +3,16 @@ import Curso from "./curso.model.js";
 
 export const postCurso = async (req, res) => {
     try {
-        const data = req.body;
+        const { nombre } = req.body;
 
-        const curso = new Curso(data);
+        if (!nombre) {
+            return res.status(400).json({
+                success: false,
+                message: 'El nombre del curso es obligatorio'
+            });
+        }
+
+        const curso = new Curso({ nombre });
         await curso.save();
 
         res.status(200).json({
@@ -39,7 +46,6 @@ export const getCursos = async (req = request, res = response) => {
             total,
             cursos
         });
-
     } catch (error) {
         res.status(500).json({
             success: false,
@@ -52,7 +58,6 @@ export const getCursos = async (req = request, res = response) => {
 export const getCursoById = async (req, res) => {
     try {
         const { id } = req.params;
-
         const curso = await Curso.findById(id);
 
         if (!curso) {
@@ -66,7 +71,6 @@ export const getCursoById = async (req, res) => {
             success: true,
             curso
         });
-
     } catch (error) {
         res.status(500).json({
             success: false,
@@ -78,9 +82,16 @@ export const getCursoById = async (req, res) => {
 
 export const getCursoByNombre = async (req, res) => {
     try {
-        const { nombre } = req.params;
+        const { name } = req.params;
 
-        const curso = await Curso.findOne({ nombre });
+        if (!name) {
+            return res.status(400).json({
+                success: false,
+                message: 'El nombre es requerido'
+            });
+        }
+
+        const curso = await Curso.findOne({ nombre: name });
 
         if (!curso) {
             return res.status(404).json({
@@ -93,7 +104,6 @@ export const getCursoByNombre = async (req, res) => {
             success: true,
             curso
         });
-
     } catch (error) {
         res.status(500).json({
             success: false,
@@ -106,16 +116,22 @@ export const getCursoByNombre = async (req, res) => {
 export const putCurso = async (req, res = response) => {
     try {
         const { id } = req.params;
-        const data = req.body;
+        const { nombre } = req.body;
 
-        const curso = await Curso.findByIdAndUpdate(id, data, { new: true });
+        if (!nombre) {
+            return res.status(400).json({
+                success: false,
+                message: 'El nombre es obligatorio'
+            });
+        }
+
+        const curso = await Curso.findByIdAndUpdate(id, { nombre }, { new: true });
 
         res.status(200).json({
             success: true,
             message: '¡Curso actualizado!',
             curso
         });
-
     } catch (error) {
         res.status(500).json({
             success: false,
@@ -128,7 +144,6 @@ export const putCurso = async (req, res = response) => {
 export const deleteCurso = async (req, res) => {
     try {
         const { id } = req.params;
-
         const curso = await Curso.findByIdAndUpdate(id, { status: false }, { new: true });
 
         res.status(200).json({
@@ -136,7 +151,6 @@ export const deleteCurso = async (req, res) => {
             message: '¡Curso desactivado!',
             curso
         });
-
     } catch (error) {
         res.status(500).json({
             success: false,

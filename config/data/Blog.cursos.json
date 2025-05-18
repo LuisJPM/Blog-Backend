@@ -1,0 +1,52 @@
+[{
+  "_id": {
+    "$oid": "6829135c9f6eddabc709989b"
+  },
+  "nombre": "TALLER III",
+  "status": true,
+  "createdAt": {
+    "$date": "2025-05-17T22:53:16.066Z"
+  },
+  "updatedAt": {
+    "$date": "2025-05-17T22:53:16.066Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6829136c9f6eddabc709989d"
+  },
+  "nombre": "TECNOLOGIA III",
+  "status": true,
+  "createdAt": {
+    "$date": "2025-05-17T22:53:32.614Z"
+  },
+  "updatedAt": {
+    "$date": "2025-05-17T22:53:32.614Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6829137b9f6eddabc709989f"
+  },
+  "nombre": "PRACTICA SUPERVISADA I",
+  "status": true,
+  "createdAt": {
+    "$date": "2025-05-17T22:53:47.266Z"
+  },
+  "updatedAt": {
+    "$date": "2025-05-17T22:58:35.560Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6829146d9f6eddabc70998a6"
+  },
+  "nombre": "RECESO",
+  "status": false,
+  "createdAt": {
+    "$date": "2025-05-17T22:57:49.590Z"
+  },
+  "updatedAt": {
+    "$date": "2025-05-17T22:59:24.046Z"
+  }
+}]

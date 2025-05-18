@@ -1,0 +1,200 @@
+{
+	"info": {
+		"_postman_id": "32babe0c-680f-4105-ba1b-5cb930fd4813",
+		"name": "PUBLICACIONES",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "42798822"
+	},
+	"item": [
+		{
+			"name": "postPublicacion",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"titulo\": \"NUEVA ETAPA EN TECNOLOGIA\",\r\n  \"descripcion\": \"Espero que sigamos igual de bien en esta ultima etapa de la carrera.\",\r\n  \"curso\": [\"TECNOLOGIA III\"]\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/Blog/publicaciones/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"Blog",
+						"publicaciones",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getPublicacion",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"titulo\": \"ENTREGUE MI PROYECTO DE TALLER\",\r\n    \"descripcion\": \"Chavales estoy muy contento por haber completado mi trabajo! Espero que me vaya bien.\",\r\n    \"curso\": [\"TALLER III\"]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/Blog/publicaciones/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"Blog",
+						"publicaciones",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getPublicacionById",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"titulo\": \"ENTREGUE MI PROYECTO DE TALLER\",\r\n    \"descripcion\": \"Chavales estoy muy contento por haber completado mi trabajo! Espero que me vaya bien.\",\r\n    \"curso\": [\"TALLER III\"]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/Blog/publicaciones/68296cb8e97ea7227e630e27",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"Blog",
+						"publicaciones",
+						"68296cb8e97ea7227e630e27"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getPublicacionByTitle",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"titulo\": \"ENTREGUE MI PROYECTO DE TALLER\",\r\n    \"descripcion\": \"Chavales estoy muy contento por haber completado mi trabajo! Espero que me vaya bien.\",\r\n    \"curso\": [\"TALLER III\"]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/Blog/publicaciones/titulo/NUEVA ETAPA EN TECNOLOGIA",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"Blog",
+						"publicaciones",
+						"titulo",
+						"NUEVA ETAPA EN TECNOLOGIA"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "putPublicacion",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"titulo\": \"ENTREGUE MI PROYECTO DE TALLER\",\r\n    \"descripcion\": \"Estoy muy contento por haber completado mi trabajo! Espero que me vaya bien.\",\r\n    \"curso\": [\"TALLER III\"]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/Blog/publicaciones/68296cb8e97ea7227e630e27",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"Blog",
+						"publicaciones",
+						"68296cb8e97ea7227e630e27"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "deletePublicacion",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"titulo\": \"ENTREGUE MI PROYECTO DE TALLER\",\r\n    \"descripcion\": \"Chavales estoy muy contento por haber completado mi trabajo! Espero que me vaya bien.\",\r\n    \"curso\": [\"TALLER III\"]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/Blog/publicaciones/68296e0ee97ea7227e630e2f",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"Blog",
+						"publicaciones",
+						"68296e0ee97ea7227e630e2f"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

@@ -1,7 +1,6 @@
 import { Router } from "express";
 import { check } from "express-validator";
-import {postComentario, getComentarios, getComentarioById, getComentarioByPublicacion, putComentario, deleteComentario} from "./comentario.controller.js";
-import {idComentarioValido, publicacionConComentarioValida} from "../helpers/db-validator.js";
+import { postComentario, getComentarios, getComentarioById, getComentarioByPublicacion, putComentario, deleteComentario } from "./comentario.controller.js";
 import { validarCampos } from "../middlewares/validar-campos.js";
 
 const router = Router();
@@ -9,6 +8,9 @@ const router = Router();
 router.post(
     "/",
     [
+        check("nombreAutor", "El nombre es requerido").not().isEmpty(),
+        check("contenido", "El contenido es requerido").not().isEmpty(),
+        check("publicacion", "La publicación es requerida").not().isEmpty(),
         validarCampos
     ],
     postComentario
@@ -19,16 +21,16 @@ router.get("/", getComentarios);
 router.get(
     "/:id",
     [
-        check("id", "¡ID no válido!").isMongoId(),
-        check("id").custom(idComentarioValido),
+        check("id", "El ID no es válido").isMongoId(),
         validarCampos
     ],
     getComentarioById
 );
 
 router.get(
-    "/publicacion/:titulo",
+    "/publicacion/:title",
     [
+        check("title", "El título es requerido").not().isEmpty(),
         validarCampos
     ],
     getComentarioByPublicacion
@@ -37,8 +39,10 @@ router.get(
 router.put(
     "/:id",
     [
-        check("id", "¡ID no válido!").isMongoId(),
-        check("id").custom(idComentarioValido),
+        check("id", "El ID no es válido").isMongoId(),
+        check("nombreAutor", "El nombre es requerido").optional().not().isEmpty(),
+        check("contenido", "El contenido es requerido").optional().not().isEmpty(),
+        check("publicacion", "La publicación es requerida").optional().not().isEmpty(),
         validarCampos
     ],
     putComentario
@@ -47,12 +51,10 @@ router.put(
 router.delete(
     "/:id",
     [
-        check("id", "¡ID no válido!").isMongoId(),
-        check("id").custom(idComentarioValido),
+        check("id", "El ID no es válido").isMongoId(),
         validarCampos
     ],
     deleteComentario
 );
 
 export default router;
-

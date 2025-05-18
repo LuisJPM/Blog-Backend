@@ -1,7 +1,6 @@
 import { Router } from "express";
 import { check } from "express-validator";
-import {postCurso, getCursos, getCursoById, getCursoByNombre, putCurso, deleteCurso} from "./curso.controller.js";
-import { idCursoValido,nombreCursoValido} from "../helpers/db-validator.js";
+import { postCurso, getCursos, getCursoById, getCursoByNombre, putCurso, deleteCurso } from "./curso.controller.js";
 import { validarCampos } from "../middlewares/validar-campos.js";
 
 const router = Router();
@@ -9,6 +8,7 @@ const router = Router();
 router.post(
     "/",
     [
+        check("nombre", "El nombre es obligatorio").not().isEmpty(),
         validarCampos
     ],
     postCurso
@@ -19,8 +19,7 @@ router.get("/", getCursos);
 router.get(
     "/:id",
     [
-        check("id", "¡ID inválido!").isMongoId(),
-        check("id").custom(idCursoValido),
+        check("id", "ID inválido").isMongoId(),
         validarCampos
     ],
     getCursoById
@@ -29,8 +28,7 @@ router.get(
 router.get(
     "/nombre/:name",
     [
-        check("name", "¡El nombre es obligatorio!").not().isEmpty(),
-        check("name").custom(nombreCursoValido),
+        check("name", "El nombre es obligatorio").not().isEmpty(),
         validarCampos
     ],
     getCursoByNombre
@@ -39,8 +37,8 @@ router.get(
 router.put(
     "/:id",
     [
-        check("id", "¡ID inválido!").isMongoId(),
-        check("id").custom(idCursoValido),
+        check("id", "ID inválido").isMongoId(),
+        check("nombre", "El nombre es obligatorio").not().isEmpty(),
         validarCampos
     ],
     putCurso
@@ -49,8 +47,7 @@ router.put(
 router.delete(
     "/:id",
     [
-        check("id", "¡ID inválido!").isMongoId(),
-        check("id").custom(idCursoValido),
+        check("id", "ID inválido").isMongoId(),
         validarCampos
     ],
     deleteCurso

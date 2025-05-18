@@ -3,12 +3,12 @@ import { Schema, model } from "mongoose";
 const CursoSchema = Schema({
   nombre: {
     type: String,
-    required: [true, "Name is required!"],
-    maxLength: 300,
+    required: [true, "El nombre es obligatorio"],
+    maxLength: [300, "Máximo 300 caracteres"]
   },
   status: {
-      type: Boolean,
-      default: true,
+    type: Boolean,
+    default: true,
   }
 }, {
   timestamps: true,

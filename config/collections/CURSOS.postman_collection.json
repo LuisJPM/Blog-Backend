@@ -1,0 +1,166 @@
+{
+	"info": {
+		"_postman_id": "5891c88a-da3a-48f2-af9c-f61dfbd249bc",
+		"name": "CURSOS",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "42798822"
+	},
+	"item": [
+		{
+			"name": "postCurso",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"nombre\": \"RECESO\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/Blog/cursos/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"Blog",
+						"cursos",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getCurso",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"nombre\": \"PRACTICA SUPERVISADA\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/Blog/cursos/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"Blog",
+						"cursos",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getCursoById",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"nombre\": \"PRACTICA SUPERVISADA\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/Blog/cursos/6829135c9f6eddabc709989b",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"Blog",
+						"cursos",
+						"6829135c9f6eddabc709989b"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "putCurso",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"nombre\": \"PRACTICA SUPERVISADA I\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/Blog/cursos/6829137b9f6eddabc709989f",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"Blog",
+						"cursos",
+						"6829137b9f6eddabc709989f"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "putCurso Copy",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"nombre\": \"PRACTICA SUPERVISADA I\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/Blog/cursos/6829146d9f6eddabc70998a6",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"Blog",
+						"cursos",
+						"6829146d9f6eddabc70998a6"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

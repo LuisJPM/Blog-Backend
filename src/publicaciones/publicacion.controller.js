@@ -1,17 +1,33 @@
 import { response, request } from "express";
 import Publicacion from "./publicacion.model.js";
-import Course from "../cursos/curso.model.js";
+import Curso from "../cursos/curso.model.js";
 
 export const postPublicacion = async (req, res) => {
     try {
         const data = req.body;
-        const mapeo = await Course.find({ name: { $in: data.curso } });
+
+        if (!data.curso || data.curso.length === 0) {
+            return res.status(400).json({
+                success: false,
+                message: 'Debe especificar al menos un curso'
+            });
+        }
+
+        const mapeo = await Curso.find({ nombre: { $in: data.curso } });
+        
+        if (mapeo.length !== data.curso.length) {
+            return res.status(400).json({
+                success: false,
+                message: 'Uno o más cursos no existen'
+            });
+        }
+
         data.curso = mapeo.map(course => course._id);
         const publicacion = new Publicacion(data);
         await publicacion.save();
-        await publicacion.populate('curso', 'name');
+        await publicacion.populate('curso', 'nombre');
 
-        res.status(200).json({
+        res.status(201).json({
             success: true,
             message: '¡Publicación guardada exitosamente!',
             publicacion
@@ -36,7 +52,7 @@ export const getPublicaciones = async (req = request, res = response) => {
             Publicacion.find(query)
                 .skip(Number(desde))
                 .limit(Number(limite))
-                .populate('curso', 'name')
+                .populate('curso', 'nombre')
         ]);
 
         res.status(200).json({
@@ -58,8 +74,7 @@ export const getPublicaciones = async (req = request, res = response) => {
 export const getPublicacionById = async (req, res) => {
     try {
         const { id } = req.params;
-
-        const publicacion = await Publicacion.findById(id).populate('curso', 'name');
+        const publicacion = await Publicacion.findById(id).populate('curso', 'nombre');
 
         if (!publicacion) {
             return res.status(404).json({
@@ -87,7 +102,14 @@ export const getPublicacionByTitulo = async (req, res) => {
     try {
         const { titulo } = req.params;
 
-        const publicacion = await Publicacion.findOne({ titulo }).populate('curso', 'name');
+        if (!titulo) {
+            return res.status(400).json({
+                success: false,
+                message: 'El título es requerido'
+            });
+        }
+
+        const publicacion = await Publicacion.findOne({ titulo }).populate('curso', 'nombre');
 
         if (!publicacion) {
             return res.status(404).json({
@@ -116,11 +138,22 @@ export const putPublicacion = async (req, res = response) => {
         const { id } = req.params;
         const data = req.body;
 
-        const mapeo = await Course.find({ name: { $in: data.curso } });
+        if (data.curso) {
+            const mapeo = await Curso.find({ nombre: { $in: data.curso } });
+            
+            if (mapeo.length !== data.curso.length) {
+                return res.status(400).json({
+                    success: false,
+                    message: 'Uno o más cursos no existen'
+                });
+            }
 
-        data.curso = mapeo.map(course => course._id);
+            data.curso = mapeo.map(course => course._id);
+        }
 
-        const publicacion = await Publicacion.findByIdAndUpdate(id, data, { new: true }).populate('curso', 'name');
+        const publicacion = await Publicacion.findByIdAndUpdate(id, data, { 
+            new: true 
+        }).populate('curso', 'nombre');
 
         res.status(200).json({
             success: true,
@@ -140,8 +173,18 @@ export const putPublicacion = async (req, res = response) => {
 export const deletePublicacion = async (req, res) => {
     try {
         const { id } = req.params;
+        const publicacion = await Publicacion.findByIdAndUpdate(
+            id, 
+            { status: false }, 
+            { new: true }
+        );
 
-        const publicacion = await Publicacion.findByIdAndUpdate(id, { status: false }, { new: true });
+        if (!publicacion) {
+            return res.status(404).json({
+                success: false,
+                message: 'Publicación no encontrada'
+            });
+        }
 
         res.status(200).json({
             success: true,
