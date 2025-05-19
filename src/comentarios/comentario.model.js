@@ -9,7 +9,7 @@ const ComentarioSchema = Schema({
   contenido: {
     type: String,
     required: [true, "El comentario necesita contenido"],
-    maxLength: [300, "solo se pueden poner un maximo de 300 caracteres"] // Corregido: era 3000 en el schema pero 300 en el mensaje
+    maxLength: [3000, "solo se pueden poner un maximo de 3000 caracteres"]
   },
   publicacion: {
     type: Schema.Types.ObjectId,
